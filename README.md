@@ -1,2 +1,3 @@
 # SerlvletTraininng
-A depositary for learning Servlets
+
+A depositary dedicated for helping in learning Servlets
