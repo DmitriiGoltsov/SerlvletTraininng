@@ -5,8 +5,6 @@ import com.dmdev.http.dto.FlightDto;
 
 import java.util.List;
 
-import static java.util.stream.Collectors.toList;
-
 public class FlightService {
 
     private static final FlightService INSTANCE = new FlightService();
@@ -18,13 +16,13 @@ public class FlightService {
 
     public List<FlightDto> findAll() {
         return flightDao.findAll().stream()
-                .map(flight -> new FlightDto(
-                        flight.getId(),
-                        """
+                .map(flight -> FlightDto.builder()
+                        .id(flight.getId())
+                        .description("""
                             %s - %s - %s
-                        """.formatted(flight.getDepartureAirportCode(), flight.getArrivalAirportCode(), flight.getStatus())
-                ))
-                .collect(toList());
+                        """.formatted(flight.getDepartureAirportCode(), flight.getArrivalAirportCode(), flight.getStatus()))
+                        .build())
+                .toList();
     }
 
     public static FlightService getInstance() {
