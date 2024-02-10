@@ -28,9 +28,13 @@ public final class ConnectionManager {
     public static Connection get() {
         try {
             return DriverManager.getConnection(
-                    PropertiesUtil.get(URL_KEY),
+                    "jdbc:postgresql://localhost:5432/servlet_database",
+                    "postgres",
+                   "9as6lkwfx"
+                   /* PropertiesUtil.get(URL_KEY),
                     PropertiesUtil.get(USER_KEY),
-                    PropertiesUtil.get(PASSWORD_KEY));
+                    PropertiesUtil.get(PASSWORD_KEY)*/
+            );
         } catch (SQLException throwables) {
             throw new RuntimeException(throwables);
         }
