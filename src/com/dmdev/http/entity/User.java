@@ -26,4 +26,6 @@ public class User {
     private Role role;
 
     private Sex sex;
+
+    private String image;
 }

@@ -10,6 +10,8 @@ import java.time.LocalDate;
 
 public class CreateUserMapper implements Mapper<CreateUserDto, User> {
 
+    private static final String IMAGE_DIRECTORY = "/users";
+
     private static final CreateUserMapper INSTANCE = new CreateUserMapper();
 
     @Override
@@ -21,6 +23,7 @@ public class CreateUserMapper implements Mapper<CreateUserDto, User> {
                 .password(object.getPassword())
                 .sex(Sex.valueOf(object.getSex()))
                 .role(Role.valueOf(object.getRole()))
+                .image(IMAGE_DIRECTORY + object.getImage().getSubmittedFileName())
                 .build();
     }
 
